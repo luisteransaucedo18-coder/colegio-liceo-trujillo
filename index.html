@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio San Mateo | Educación para el Futuro</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables CSS para consistencia de diseño */
+        :root {
+            --primary: #0F2C59;       /* Azul Marino Institucional */
+            --primary-light: #1E40AF; /* Azul Secundario */
+            --accent: #D97706;        /* Dorado / Ámbar Elegante */
+            --accent-hover: #B45309;  /* Dorado Oscuro */
+            --light-bg: #F8FAFC;      /* Fondo Claro */
+            --card-bg: #FFFFFF;       /* Fondo de Tarjetas */
+            --text-main: #1E293B;     /* Texto Principal */
+            --text-muted: #64748B;    /* Texto Secundario */
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(15, 44, 89, 0.08), 0 4px 6px -2px rgba(15, 44, 89, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(15, 44, 89, 0.12), 0 10px 10px -5px rgba(15, 44, 89, 0.04);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset y configuración base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Botones reutilizables */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(217, 119, 6, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(15, 44, 89, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Titulares de Sección */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Navbar Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15, 44, 89, 0.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px 0;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(217, 119, 6, 0.08);
+            z-index: 1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background-color: rgba(15, 44, 89, 0.08);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge i {
+            color: var(--accent);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            bottom: 30px;
+            left: -30px;
+        }
+
+        .floating-card-2 {
+            top: 40px;
+            right: -20px;
+            animation-delay: 2s;
+        }
+
+        .fc-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: #FEF3C7;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .fc-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .fc-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Seccion Niveles Educativos */
+        .niveles {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .level-card {
+            background-color: var(--light-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .level-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(15, 44, 89, 0.2);
+        }
+
+        .level-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .level-body {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .level-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-top: -45px;
+            margin-bottom: 1rem;
+            border: 3px solid var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .level-title {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .level-ages {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .level-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Sección Pilares / Por qué elegirnos */
+        .pilares {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 2.25rem 1.75rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--accent);
+        }
+
+        .pillar-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background-color: #EFF6FF;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pillar-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.925rem;
+            color: var(--text-muted);
+        }
+
+        /* Sección Estadísticas */
+        .stats {
+            background: linear-gradient(135deg, var(--primary) 0%, #081B38 100%);
+            color: var(--white);
+            padding: 4.5rem 0;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #E2E8F0;
+            font-weight: 500;
+        }
+
+        /* Sección Proceso de Admisión */
+        .admision {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step-card {
+            background-color: var(--light-bg);
+            padding: 2.5rem 1.75rem;
+            border-radius: var(--radius-md);
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3);
+        }
+
+        .step-title {
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .admision-cta {
+            margin-top: 3.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .admision-cta h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Sección Testimonios */
+        .testimonios {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #F59E0B;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .author-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Modal Formulario de Admisión */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 44, 89, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 550px;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px);
+            transition: var(--transition);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .modal-msg {
+            display: none;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .modal-msg.success {
+            display: block;
+            background-color: #DEF7EC;
+            color: #03543F;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0B192C;
+            color: #94A3B8;
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo-title {
+            color: var(--white);
+        }
+
+        .footer-desc {
+            margin: 1.25rem 0;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .floating-card-1 {
+                left: 10px;
+            }
+            .floating-card-2 {
+                right: 10px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-container {
+                padding: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navegación -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">SAN MATEO</span>
+                    <span class="logo-sub">COLEGIO BILINGÜE</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#niveles" class="nav-link">Niveles</a></li>
+                    <li><a href="#admision" class="nav-link">Admisión</a></li>
+                    <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li>
+                        <button class="btn btn-primary open-modal-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Admisión 2027
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-star"></i> Matrículas Abiertas 2027
+                </div>
+                <h1 class="hero-title">Educación con propósito para formar los <span>líderes del futuro</span></h1>
+                <p class="hero-description">
+                    Un entorno innovador, bilingüe y centrado en valores donde sus hijos descubrirán su máximo potencial académico y personal.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary open-modal-btn">
+                        Solicitar Información <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <a href="#nosotros" class="btn btn-outline">Conoce Nuestra Propuesta</a>
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <div class="hero-image-card">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Estudiantes felices en el Colegio San Mateo" onerror="this.src='https://placehold.co/800x600/0F2C59/FFFFFF?text=Colegio+San+Mateo'">
+                </div>
+
+                <div class="floating-card floating-card-1">
+                    <div class="fc-icon">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="fc-text">
+                        <strong>Educación de Excelencia</strong>
+                        <span>Certificación Internacional</span>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-2">
+                    <div class="fc-icon" style="background-color: #E0E7FF; color: var(--primary-light);">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <div class="fc-text">
+                        <strong>Programa Bilingüe</strong>
+                        <span>100% Inmersión en Inglés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Niveles Educativos -->
+    <section class="niveles" id="niveles">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nivel Formativo</span>
+                <h2 class="section-title">Niveles Educativos</h2>
+                <p class="section-subtitle">Diseñamos etapas educativas adaptadas al desarrollo cognitivo y emocional de cada niño.</p>
+            </div>
+
+            <div class="levels-grid">
+                <!-- Inicial -->
+                <div class="level-card">
+                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=600&auto=format&fit=crop" alt="Inicial Kinder" class="level-img" onerror="this.src='https://placehold.co/600x400/0F2C59/FFFFFF?text=Inicial'">
+                    <div class="level-body">
+                        <div class="level-icon">
+                            <i class="fa-solid fa-shapes"></i>
+                        </div>
+                        <h3 class="level-title">Educación Inicial</h3>
+                        <span class="level-ages">3 a 5 Años</span>
+                        <p class="level-desc">Estimulación temprana, aprendizaje basado en el juego y descubrimiento de habilidades socioemocionales básicas en un ambiente seguro.</p>
+                        <button class="btn btn-outline open-modal-btn" style="width: 100%;">Saber Más</button>
+                    </div>
+                </div>
+
+                <!-- Primaria -->
+                <div class="level-card">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" alt="Primaria" class="level-img" onerror="this.src='https://placehold.co/600x400/0F2C59/FFFFFF?text=Primaria'">
+                    <div class="level-body">
+                        <div class="level-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h3 class="level-title">Educación Primaria</h3>
+                        <span class="level-ages">6 a 11 Años</span>
+                        <p class="level-desc">Desarrollo del pensamiento crítico, consolidación bilingüe, razonamiento lógico-matemático y proyectos interdisciplinarios.</p>
+                        <button class="btn btn-outline open-modal-btn" style="width: 100%;">Saber Más</button>
+                    </div>
+                </div>
+
+                <!-- Secundaria -->
+                <div class="level-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop" alt="Secundaria" class="level-img" onerror="this.src='https://placehold.co/600x400/0F2C59/FFFFFF?text=Secundaria'">
+                    <div class="level-body">
+                        <div class="level-icon">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <h3 class="level-title">Educación Secundaria</h3>
+                        <span class="level-ages">12 a 16 Años</span>
+                        <p class="level-desc">Preparación preuniversitaria, mentalidad emprendedora, tecnología avanzada y habilidades de liderazgo para los retos globales.</p>
+                        <button class="btn btn-outline open-modal-btn" style="width: 100%;">Saber Más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Por Qué Elegirnos -->
+    <section class="pilares" id="nosotros">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestra Diferencia</span>
+                <h2 class="section-title">¿Por qué elegir Colegio San Mateo?</h2>
+                <p class="section-subtitle">Ofrecemos un modelo pedagógico integral que combina innovación académica con principios morales firmes.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="pillar-title">Tecnología e Innovación</h3>
+                    <p class="pillar-desc">Aulas interactivas, laboratorios STEM y formación en robótica e informática desde temprana edad.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="pillar-title">Enfoque Bilingüe</h3>
+                    <p class="pillar-desc">Currículo intensivo de inglés con acreditaciones internacionales que preparan al alumno para un mundo globalizado.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="pillar-title">Formación en Valores</h3>
+                    <p class="pillar-desc">Fomentamos la empatía, el respeto, la responsabilidad social y el trabajo en equipo en cada aspecto escolar.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+                    <h3 class="pillar-title">Talleres Extracurriculares</h3>
+                    <p class="pillar-desc">Amplia variedad de disciplinas deportivas, artísticas y musicales para potenciar el talento de cada estudiante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Estadísticas -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">+25</span>
+                    <span class="stat-label">Años de Trayectoria</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Ingreso Universitario</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">+15</span>
+                    <span class="stat-label">Talleres Extracurriculares</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1:12</span>
+                    <span class="stat-label">Docente por Alumnos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proceso de Admisión -->
+    <section class="admision" id="admision">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Únete a Nosotros</span>
+                <h2 class="section-title">Proceso de Admisión 2027</h2>
+                <p class="section-subtitle">Tres sencillos pasos para asegurar el futuro educativo de tus hijos.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Inscripción Online</h3>
+                    <p class="step-desc">Completa el formulario digital con los datos de tu familia para iniciar la solicitud de vacante.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Entrevista Familiar</h3>
+                    <p class="step-desc">Coordinamos un encuentro presencial u online para conocer sus expectativas y compartir nuestro proyecto.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Matrícula</h3>
+                    <p class="step-desc">Tras la reserva de vacante, adjunta la documentación solicitada y completa la matriculación final.</p>
+                </div>
+            </div>
+
+            <div class="admision-cta">
+                <h3>¿Listo para dar el siguiente paso?</h3>
+                <p>Las vacantes son limitadas para garantizar atención personalizada.</p>
+                <button class="btn btn-primary open-modal-btn">
+                    <i class="fa-solid fa-file-pen"></i> Solicitar Vacante Ahora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section class="testimonios" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Experiencias</span>
+                <h2 class="section-title">Lo que dicen las familias</h2>
+                <p class="section-subtitle">La confianza de nuestra comunidad es nuestra mejor carta de presentación.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"La atención personalizada y el nivel de inglés son increíbles. Mis hijos van felices al colegio todos los días y como padres nos sentimos muy respaldados."</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Mariana Gómez" class="author-img" onerror="this.src='https://placehold.co/100x100/0F2C59/FFFFFF?text=Padre'">
+                        <div>
+                            <span class="author-name">Mariana Gómez</span>
+                            <span class="author-role">Madre de alumno de Primaria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"El enfoque en valores y la preparación académica le permitieron a mi hija ingresar en su primera opción universitaria. ¡Agradecidos con los docentes!"</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Carlos Benítez" class="author-img" onerror="this.src='https://placehold.co/100x100/0F2C59/FFFFFF?text=Padre'">
+                        <div>
+                            <span class="author-name">Carlos Benítez</span>
+                            <span class="author-role">Padre de Exalumna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Las instalaciones y los talleres extracurriculares de robótica e instrumentos han estimulado enormemente el talento y la creatividad de mi hijo."</p>
+                    </div>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop" alt="Sofía Ramírez" class="author-img" onerror="this.src='https://placehold.co/100x100/0F2C59/FFFFFF?text=Padre'">
+                        <div>
+                            <span class="author-name">Sofía Ramírez</span>
+                            <span class="author-role">Madre de alumno de Inicial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-title">SAN MATEO</span>
+                            <span class="logo-sub">COLEGIO BILINGÜE</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">
+                        Formando líderes integrales, innovadores y con valores para transformar la sociedad de mañana.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#niveles">Niveles Educativos</a></li>
+                        <li><a href="#admision">Admisión 2027</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Niveles</h4>
+                    <ul class="footer-links">
+                        <li><a href="#niveles">Inicial / Nido</a></li>
+                        <li><a href="#niveles">Educación Primaria</a></li>
+                        <li><a href="#niveles">Educación Secundaria</a></li>
+                        <li><a href="#niveles">Programa Bilingüe</a></li>
+                        <li><a href="#niveles">Acreditaciones</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Av. Las Flores 450, Urb. El Golf, Lima</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+51 (01) 456-7890</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>admision@sanmateo.edu.pe</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Lun - Vie: 8:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2027 Colegio San Mateo. Todos los derechos reservados. Diseñado para ofrecer excelencia educativa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Formulario de Admisión -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <h3 class="modal-title">Solicitud de Admisión 2027</h3>
+                <p class="modal-subtitle">Déjanos tus datos y un asesor educativo se pondrá en contacto a la brevedad.</p>
+            </div>
+
+            <form id="admissionForm">
+                <div class="form-group">
+                    <label class="form-label" for="parentName">Nombre del Apoderado *</label>
+                    <input type="text" id="parentName" class="form-control" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">Teléfono / WhatsApp *</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+51 987 654 321" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="levelSelect">Nivel de Interés *</label>
+                    <select id="levelSelect" class="form-control" required>
+                        <option value="">Selecciona un nivel...</option>
+                        <option value="inicial">Inicial / Kindergarten</option>
+                        <option value="primaria">Primaria</option>
+                        <option value="secundaria">Secundaria</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Mensaje o Consulta adicional</label>
+                    <textarea id="message" class="form-control" rows="3" placeholder="¿Tienes alguna consulta específica?"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Enviar Solicitud <i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+                <div class="modal-msg" id="modalMsg">
+                    ¡Gracias por tu interés! Hemos recibido tu solicitud. Te contactaremos pronto.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Manejo de Menú Responsive
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Manejo de Modal de Admisión
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalClose = document.getElementById('modalClose');
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
+            const admissionForm = document.getElementById('admissionForm');
+            const modalMsg = document.getElementById('modalMsg');
+
+            const openModal = () => {
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Bloquear scroll
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+                // Reset de mensajes tras cerrar
+                setTimeout(() => {
+                    modalMsg.classList.remove('success');
+                    admissionForm.reset();
+                }, 300);
+            };
+
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            });
+
+            modalClose.addEventListener('click', closeModal);
+
+            // Cerrar modal al hacer clic en el fondo
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Envío del Formulario
+            admissionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Mostrar mensaje de éxito simulado
+                modalMsg.classList.add('success');
+
+                // Ocultar modal automáticamente después de 3 segundos
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
